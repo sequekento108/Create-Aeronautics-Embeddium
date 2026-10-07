@@ -1,0 +1,64 @@
+# Gradle / build outputs (kept locally, never committed)
+.gradle/
+build/
+**/build/
+out/
+
+# Run configs
+run/
+runs/
+logs/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+.classpath
+.project
+.settings/
+*.launch
+.metadata/
+
+# Java / compiled
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+!gradle/wrapper/gradle-wrapper.jar
+
+# Rust (sable_rapier)
+/sable/sable_rapier/src/main/rust/target
+/sable/sable_rapier/src/main/rust/flamegraph.svg
+
+# C# build artifacts
+**/bin/
+**/obj/
+
+# Logs / crash / temp
+*.log
+*.stackdump
+hs_err_pid*
+*~
+.fuse_hidden*
+.nfs*
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Misc
+.gradleTaskNameCache
+.gradletasknamecache
+gradle-app.setting
+.checkstyle/
+/.profileconfig.json
+**/.intentionally-empty-file.o
