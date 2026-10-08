@@ -43,6 +43,16 @@ public class SimNeoForgeClientEvents {
 	}
 
 	@SubscribeEvent
+	public static void interactionKeyMappingTriggered(final InputEvent.InteractionKeyMappingTriggered event) {
+		if (event.isUseItem()) {
+			if (SimulatedCommonClientEvents.useItemMappingTriggered()) {
+				event.setCanceled(true);
+				event.setSwingHand(false);
+			}
+		}
+	}
+
+	@SubscribeEvent
 	public static void postMouseButtonInput(final InputEvent.MouseButton.Post event) {
 		SimulatedCommonClientEvents.onAfterMouseInput(event.getButton(), event.getModifiers(), event.getAction());
 	}

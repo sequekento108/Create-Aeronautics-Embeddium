@@ -41,7 +41,6 @@ import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
@@ -97,16 +96,6 @@ public class SimNeoForgeCommonEvents {
 	@SubscribeEvent
 	public static void addReloadListeners(final AddReloadListenerEvent event) {
 		event.addListener(EndSeaPhysicsData.ReloadListener.INSTANCE);
-	}
-
-	@SubscribeEvent
-	public static void keyInput(final InputEvent.InteractionKeyMappingTriggered event) {
-		if (event.isUseItem()) {
-			if (SimulatedCommonClientEvents.useItemMappingTriggered()) {
-				event.setCanceled(true);
-				event.setSwingHand(false);
-			}
-		}
 	}
 
 	@SubscribeEvent

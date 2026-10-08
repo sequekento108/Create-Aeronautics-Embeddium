@@ -19,6 +19,7 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import com.tterrag.registrate.util.RegistrateDistExecutor;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.simulated_team.simulated.Simulated;
 import dev.simulated_team.simulated.config.server.blocks.SimStress;
@@ -89,6 +90,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 
@@ -936,6 +938,12 @@ public class SimBlocks {
     }
 
     public static void register() {
+        // RadialWrenchMenu extends AbstractSimiScreen (client-only). Loading it on a
+        // dedicated server throws NoClassDefFoundError: Screen, so only touch it on the client.
+        RegistrateDistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> SimBlocks::registerWrenchBlacklist);
+    }
+
+    private static void registerWrenchBlacklist() {
         RadialWrenchMenu.registerBlacklistedBlock(SWIVEL_BEARING.getId());
         RadialWrenchMenu.registerBlacklistedBlock(SWIVEL_BEARING_LINK_BLOCK.getId());
         RadialWrenchMenu.registerBlacklistedBlock(PAIRED_DOCKING_CONNECTOR.getId());
